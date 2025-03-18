@@ -1,0 +1,26 @@
+In file included from /home/dawn/data/esp-idf/components/esp_wifi/include/esp_smartconfig.h:12,
+                 from /home/dawn/data/code/smartconfig_test/main/smartconfig_test.c:3:
+/home/dawn/data/code/smartconfig_test/main/smartconfig_test.c: In function 'app_main':
+/home/dawn/data/code/smartconfig_test/main/smartconfig_test.c:50:54: warning: passing argument 2 of 'esp_wifi_set_config' from incompatible pointer type [-Wincompatible-pointer-types]
+   50 |     ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_STA, &wifi_cfg)); // 设置Wi-Fi配置
+      |                                                      ^~~~~~~~~
+      |                                                      |
+      |                                                      wifi_init_config_t *
+/home/dawn/data/esp-idf/components/esp_common/include/esp_err.h:117:30: note: in definition of macro 'ESP_ERROR_CHECK'
+  117 |         esp_err_t err_rc_ = (x);                                        \
+      |                              ^
+In file included from /home/dawn/data/code/smartconfig_test/main/smartconfig_test.c:5:
+/home/dawn/data/esp-idf/components/esp_wifi/include/esp_wifi.h:918:74: note: expected 'wifi_config_t *' but argument is of type 'wifi_init_config_t *'
+  918 | esp_err_t esp_wifi_set_config(wifi_interface_t interface, wifi_config_t *conf);
+      |                                                           ~~~~~~~~~~~~~~~^~~~
+/home/dawn/data/code/smartconfig_test/main/smartconfig_test.c:54:54: warning: passing argument 2 of 'esp_wifi_set_config' from incompatible pointer type [-Wincompatible-pointer-types]
+   54 |     ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_STA, &wifi_cfg));// 设置Wi-Fi配置
+      |                                                      ^~~~~~~~~
+      |                                                      |
+      |                                                      wifi_init_config_t *
+/home/dawn/data/esp-idf/components/esp_common/include/esp_err.h:117:30: note: in definition of macro 'ESP_ERROR_CHECK'
+  117 |         esp_err_t err_rc_ = (x);                                        \
+      |                              ^
+/home/dawn/data/esp-idf/components/esp_wifi/include/esp_wifi.h:918:74: note: expected 'wifi_config_t *' but argument is of type 'wifi_init_config_t *'
+  918 | esp_err_t esp_wifi_set_config(wifi_interface_t interface, wifi_config_t *conf);
+      |                                                           ~~~~~~~~~~~~~~~^~~~

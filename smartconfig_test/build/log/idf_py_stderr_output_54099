@@ -1,0 +1,63 @@
+In file included from /home/dawn/data/esp-idf/components/esp_wifi/include/esp_smartconfig.h:12,
+                 from /home/dawn/data/code/smartconfig_test/main/smartconfig_test.c:3:
+/home/dawn/data/code/smartconfig_test/main/smartconfig_test.c: In function 'app_main':
+/home/dawn/data/code/smartconfig_test/main/smartconfig_test.c:35:79: error: 'wifi_event_handler' undeclared (first use in this function); did you mean 'esp_event_handler_t'?
+   35 |     ESP_ERROR_CHECK(esp_event_handler_register(WIFI_EVENT, ESP_EVENT_ANY_ID, &wifi_event_handler, NULL));// 注册Wi-Fi事件和IP事件处理函数
+      |                                                                               ^~~~~~~~~~~~~~~~~~
+/home/dawn/data/esp-idf/components/esp_common/include/esp_err.h:117:30: note: in definition of macro 'ESP_ERROR_CHECK'
+  117 |         esp_err_t err_rc_ = (x);                                        \
+      |                              ^
+/home/dawn/data/code/smartconfig_test/main/smartconfig_test.c:35:79: note: each undeclared identifier is reported only once for each function it appears in
+   35 |     ESP_ERROR_CHECK(esp_event_handler_register(WIFI_EVENT, ESP_EVENT_ANY_ID, &wifi_event_handler, NULL));// 注册Wi-Fi事件和IP事件处理函数
+      |                                                                               ^~~~~~~~~~~~~~~~~~
+/home/dawn/data/esp-idf/components/esp_common/include/esp_err.h:117:30: note: in definition of macro 'ESP_ERROR_CHECK'
+  117 |         esp_err_t err_rc_ = (x);                                        \
+      |                              ^
+/home/dawn/data/code/smartconfig_test/main/smartconfig_test.c:39:55: error: 'wifi_config' undeclared (first use in this function); did you mean 'wifi_config_t'?
+   39 |     ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_STA, &wifi_config));// 设置Wi-Fi配置
+      |                                                       ^~~~~~~~~~~
+/home/dawn/data/esp-idf/components/esp_common/include/esp_err.h:117:30: note: in definition of macro 'ESP_ERROR_CHECK'
+  117 |         esp_err_t err_rc_ = (x);                                        \
+      |                              ^
+/home/dawn/data/code/smartconfig_test/main/smartconfig_test.c:43:5: error: unknown type name 'esp_smartconfig_config_t'
+   43 |     esp_smartconfig_config_t cfg = SMARTCONFIG_CONFIG_DEFAULT();
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/dawn/data/code/smartconfig_test/main/smartconfig_test.c:43:36: error: implicit declaration of function 'SMARTCONFIG_CONFIG_DEFAULT'; did you mean 'SMARTCONFIG_START_CONFIG_DEFAULT'? [-Werror=implicit-function-declaration]
+   43 |     esp_smartconfig_config_t cfg = SMARTCONFIG_CONFIG_DEFAULT();
+      |                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                    SMARTCONFIG_START_CONFIG_DEFAULT
+/home/dawn/data/code/smartconfig_test/main/smartconfig_test.c:44:27: warning: passing argument 1 of 'esp_smartconfig_start' from incompatible pointer type [-Wincompatible-pointer-types]
+   44 |     esp_smartconfig_start(&SMARTCONFIG_CONFIG_DEFAULT);
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                           |
+      |                           int (*)()
+/home/dawn/data/esp-idf/components/esp_wifi/include/esp_smartconfig.h:83:67: note: expected 'const smartconfig_start_config_t *' but argument is of type 'int (*)()'
+   83 | esp_err_t esp_smartconfig_start(const smartconfig_start_config_t *config);
+      |                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~
+/home/dawn/data/code/smartconfig_test/main/smartconfig_test.c:43:30: warning: unused variable 'cfg' [-Wunused-variable]
+   43 |     esp_smartconfig_config_t cfg = SMARTCONFIG_CONFIG_DEFAULT();
+      |                              ^~~
+/home/dawn/data/code/smartconfig_test/main/smartconfig_test.c: In function 'wifi_event_handler':
+/home/dawn/data/code/smartconfig_test/main/smartconfig_test.c:110:37: error: pointer targets in passing argument 1 of 'snprintf' differ in signedness [-Werror=pointer-sign]
+  110 |             snprintf(wifi_config.sta.ssid, sizeof(wifi_config.sta.ssid), "%s", (char*)sc_data->ssid)// 将SmartConfig数据中的SSID和密码复制到Wi-Fi配置结构体中
+      |                      ~~~~~~~~~~~~~~~^~~~~
+      |                                     |
+      |                                     uint8_t * {aka unsigned char *}
+In file included from /home/dawn/data/code/smartconfig_test/main/smartconfig_test.c:1:
+/home/dawn/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/stdio.h:272:19: note: expected 'char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  272 | int     snprintf (char *__restrict, size_t, const char *__restrict, ...)
+      |                   ^
+/home/dawn/data/code/smartconfig_test/main/smartconfig_test.c:110:101: error: expected ';' before 'snprintf'
+  110 |             snprintf(wifi_config.sta.ssid, sizeof(wifi_config.sta.ssid), "%s", (char*)sc_data->ssid)// 将SmartConfig数据中的SSID和密码复制到Wi-Fi配置结构体中
+      |                                                                                                     ^
+      |                                                                                                     ;
+  111 |             snprintf(wifi_config.sta.password, sizeof(wifi_config.sta.password), "%s", (char*)sc_data->password)// 将SmartConfig数据中的BSSID设置到Wi-Fi配置结构体中
+      |             ~~~~~~~~                                                                                 
+/home/dawn/data/code/smartconfig_test/main/smartconfig_test.c:118:13: error: implicit declaration of function 'sep_wifi_set_config'; did you mean 'esp_wifi_set_config'? [-Werror=implicit-function-declaration]
+  118 |             sep_wifi_set_config(WIFI_IF_STA, &wifi_config); // 设置Wi-Fi配置
+      |             ^~~~~~~~~~~~~~~~~~~
+      |             esp_wifi_set_config
+cc1: some warnings being treated as errors
+make[2]: *** [esp-idf/main/CMakeFiles/__idf_main.dir/build.make:76：esp-idf/main/CMakeFiles/__idf_main.dir/smartconfig_test.c.obj] 错误 1
+make[1]: *** [CMakeFiles/Makefile2:4611：esp-idf/main/CMakeFiles/__idf_main.dir/all] 错误 2
+make: *** [Makefile:136：all] 错误 2

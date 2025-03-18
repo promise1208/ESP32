@@ -1,0 +1,5 @@
+/home/dawn/data/code/qwen/main/wifi.c: In function 'wifi_init':
+/home/dawn/data/code/qwen/main/wifi.c:39:9: warning: initialized field overwritten [-Woverride-init]
+   39 |         {
+      |         ^
+/home/dawn/data/code/qwen/main/wifi.c:39:9: note: (near initialization for 'wifi_config.sta')

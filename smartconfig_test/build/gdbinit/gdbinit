@@ -1,0 +1,2 @@
+source /home/dawn/data/code/smartconfig_test/build/gdbinit/symbols
+source /home/dawn/data/code/smartconfig_test/build/gdbinit/connect
